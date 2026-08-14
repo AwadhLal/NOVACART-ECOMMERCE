@@ -374,7 +374,7 @@ This project is for educational purposes as part of an internship evaluation.
 
 ## 👤 Author
 
-**NOVEXA TECH Internship Project**
+**Awadh Patel**
 
 ---
 
