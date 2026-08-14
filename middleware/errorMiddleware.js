@@ -49,7 +49,12 @@ const errorHandler = (err, req, res, next) => {
 };
 
 // 404 handler for unmatched routes
+// Socket.IO probes (/socket.io/...) are silently dropped with a plain 404
+// so they don't pollute server logs with JSON error objects.
 const notFound = (req, res, next) => {
+  if (req.originalUrl.startsWith('/socket.io')) {
+    return res.status(404).end();
+  }
   const error = new Error(`Route not found: ${req.originalUrl}`);
   error.statusCode = 404;
   next(error);
